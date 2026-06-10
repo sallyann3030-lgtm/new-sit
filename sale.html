@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>姜美美教練｜自由潛水體驗課 報名單</title>
+  <style>
+    :root{
+      --bg:#f0f9ff;
+      --card:#ffffff;
+      --text:#1e293b;
+      --muted:#64748b;
+      --line:#e2e8f0;
+      --brand:#0284c7;
+      --brand2:#0ea5e9;
+      --shadow:0 10px 30px rgba(0,0,0,.04);
+      --radius:20px;
+      --radius2:12px;
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Noto Sans TC","PingFang TC",sans-serif;
+      background:radial-gradient(1200px 600px at 20% 0%,rgba(14,165,233,.1),transparent 60%),
+                 radial-gradient(1200px 600px at 80% 20%,rgba(2,132,199,.08),transparent 60%),
+                 var(--bg);
+      color:var(--text);
+      line-height:1.6;
+    }
+    .wrap{max-width:1100px;margin:0 auto;padding:24px;}
+
+    header.card{
+      display:flex;justify-content:space-between;align-items:center;gap:16px;
+      padding:24px;margin-bottom:24px;
+      background:linear-gradient(to right,#ffffff,#f0f9ff);
+    }
+    .brand-info{display:flex;align-items:center;gap:20px;}
+    .avatar{
+      width:64px;height:64px;border-radius:50%;
+      background:#0284c7;overflow:hidden;border:2px solid var(--brand);
+      display:flex;align-items:center;justify-content:center;
+      color:white;font-weight:bold;font-size:22px;
+    }
+    .brand h1{margin:0;font-size:24px;letter-spacing:.5px;color:var(--brand);}
+    .brand p{margin:4px 0 0;color:var(--muted);font-size:14px;font-weight:500;}
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 16px;border-radius:999px;
+      background:rgba(2,132,199,.1);color:var(--brand);
+      font-weight:700;font-size:13px;
+    }
+
+    .grid{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:start;}
+    @media(max-width:900px){.grid{grid-template-columns:1fr;}}
+
+    .card{
+      background:var(--card);border:1px solid rgba(226,232,240,.8);
+      box-shadow:var(--shadow);border-radius:var(--radius);
+      padding:24px;margin-bottom:24px;
+    }
+    .card h2{margin:0 0 16px;font-size:18px;display:flex;align-items:center;gap:10px;color:#0f172a;}
+
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    @media(max-width:600px){.row{grid-template-columns:1fr;}}
+
+    label{display:block;font-size:14px;font-weight:700;margin-bottom:8px;color:#475569;}
+    input,select,textarea{
+      width:100%;padding:12px;border-radius:var(--radius2);
+      border:1px solid var(--line);background:#fff;
+      font-size:15px;outline:none;transition:all 0.2s;
+    }
+    input:focus,select:focus,textarea:focus{
+      border-color:var(--brand);
+      box-shadow:0 0 0 4px rgba(2,132,199,.1);
+    }
+    .divider{height:1px;background:var(--line);margin:24px 0;}
+
+    /* ── 日曆選擇器 ── */
+    .calendar-wrap{
+      background:#fff;border:1px solid var(--line);
+      border-radius:var(--radius2);overflow:hidden;
+    }
+    .cal-header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:14px 18px;background:var(--brand);color:#fff;
+    }
+    .cal-header span{font-weight:700;font-size:15px;}
+    .cal-nav{
+      background:none;border:none;color:#fff;
+      font-size:20px;cursor:pointer;padding:4px 10px;border-radius:6px;
+      transition:.15s;
+    }
+    .cal-nav:hover{background:rgba(255,255,255,.2);}
+    .cal-grid{
+      display:grid;grid-template-columns:repeat(7,1fr);
+      gap:0;padding:12px;
+    }
+    .cal-dow{
+      text-align:center;font-size:12px;font-weight:700;
+      color:var(--muted);padding:6px 0;letter-spacing:1px;
+    }
+    .cal-day{
+      text-align:center;padding:9px 4px;font-size:14px;
+      border-radius:8px;cursor:pointer;transition:.15s;
+      border:2px solid transparent;
+    }
+    .cal-day:hover:not(.empty):not(.disabled){background:#e0f2fe;color:var(--brand);}
+    .cal-day.empty{cursor:default;}
+    .cal-day.disabled{color:#cbd5e1;cursor:not-allowed;background:none;}
+    .cal-day.selected{background:var(--brand);color:#fff;font-weight:700;}
+    .cal-day.today{border-color:var(--brand2);}
+    .cal-selected-display{
+      padding:10px 18px;background:#f0f9ff;
+      border-top:1px solid var(--line);
+      font-size:14px;color:var(--brand);font-weight:600;
+    }
+
+    /* ── 時段選單 ── */
+    .slot-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:4px;}
+    @media(max-width:600px){.slot-grid{grid-template-columns:1fr;}}
+    .slot-btn{
+      padding:11px 14px;border-radius:var(--radius2);
+      border:1.5px solid var(--line);background:#fff;
+      font-size:14px;cursor:pointer;text-align:center;
+      transition:.15s;font-weight:500;color:var(--text);
+    }
+    .slot-btn:hover{border-color:var(--brand2);background:#f0f9ff;}
+    .slot-btn.active{border-color:var(--brand);background:rgba(2,132,199,.07);
+      font-weight:700;color:var(--brand);border-width:2px;}
+
+    /* ── 地點 pills ── */
+    .radio-group{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+    @media(max-width:600px){.radio-group{grid-template-columns:1fr;}}
+    .pill{
+      border:1px solid var(--line);border-radius:var(--radius2);
+      padding:12px 16px;cursor:pointer;
+      display:flex;gap:12px;align-items:center;transition:.2s;
+    }
+    .pill input{width:auto;cursor:pointer;}
+    .pill:hover{border-color:var(--brand2);background:rgba(14,165,233,.03);}
+    .pill.active{border-color:var(--brand);background:rgba(2,132,199,.05);border-width:2px;}
+    .pill.disabled-loc{opacity:.4;cursor:not-allowed;pointer-events:none;}
+
+    /* ── 按鈕 ── */
+    .btn{
+      width:100%;padding:16px;border:0;border-radius:16px;
+      font-weight:800;cursor:pointer;
+      background:linear-gradient(135deg,var(--brand2),var(--brand));
+      color:#fff;font-size:16px;
+      box-shadow:0 10px 25px rgba(2,132,199,.2);
+      transition:all 0.2s;
+    }
+    .btn:hover{opacity:.9;transform:translateY(-1px);}
+    .btn:active{transform:translateY(1px);}
+    .btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+
+    /* ── 摘要欄 ── */
+    .summary-card{position:sticky;top:24px;}
+    .summary-list{display:flex;flex-direction:column;gap:14px;margin-bottom:24px;}
+    .sumrow{display:flex;justify-content:space-between;gap:10px;font-size:15px;}
+    .sumrow span:last-child{font-weight:600;color:#334155;}
+    .total{
+      padding-top:16px;border-top:1px dashed var(--line);
+      font-size:18px;font-weight:800;color:var(--brand);
+    }
+    .notice{
+      padding:16px;border-radius:16px;
+      background:#f0f9ff;border:1px solid #bae6fd;
+      color:#0369a1;font-size:13.5px;line-height:1.6;
+    }
+    .notice b{display:block;margin-bottom:6px;font-size:15px;color:#0c4a6e;}
+
+    /* 注意事項警示區塊 */
+    .caution-box{
+      padding:16px;border-radius:16px;
+      background:#fff7ed;border:1px solid #ffedd5;
+      color:#9a3412;font-size:13.5px;line-height:1.8;
+      margin-bottom:16px;
+    }
+    .caution-box b{display:block;margin-bottom:8px;font-size:15px;color:#ea580c;}
+
+    .toast{
+      position:fixed;left:50%;bottom:32px;transform:translateX(-50%);
+      background:#0f172a;color:#fff;padding:12px 24px;border-radius:999px;
+      font-size:14px;box-shadow:0 10px 20px rgba(0,0,0,.2);
+      opacity:0;transition:.3s;z-index:1000;
+    }
+    .toast.show{opacity:1;transform:translateX(-50%) translateY(-10px);}
+
+    footer{padding:40px 18px;color:var(--muted);font-size:13px;text-align:center;}
+
+    /* 成功頁面 */
+    #successPage{
+      display:none;position:fixed;inset:0;z-index:9999;
+      background:radial-gradient(1200px 600px at 20% 0%,rgba(14,165,233,.15),transparent 60%),
+                 radial-gradient(1200px 600px at 80% 20%,rgba(2,132,199,.1),transparent 60%),
+                 #f0f9ff;
+      overflow-y:auto;
+    }
+    .success-inner{
+      max-width:600px;margin:0 auto;
+      padding:60px 24px;text-align:center;
+    }
+    .success-icon{
+      width:80px;height:80px;border-radius:50%;
+      background:linear-gradient(135deg,var(--brand2),var(--brand));
+      display:flex;align-items:center;justify-content:center;
+      margin:0 auto 32px;
+      box-shadow:0 15px 35px rgba(2,132,199,.3);
+    }
+    .success-card{
+      background:#fff;border-radius:20px;padding:32px;
+      box-shadow:0 10px 30px rgba(0,0,0,.06);
+      border:1px solid var(--line);text-align:left;margin-bottom:28px;
+    }
+    .success-label{
+      font-size:13px;font-weight:700;color:var(--brand);
+      letter-spacing:2px;margin-bottom:20px;display:block;
+    }
+    .success-row{
+      display:flex;justify-content:space-between;gap:16px;
+      font-size:14px;padding-bottom:12px;
+      border-bottom:1px solid #f1f5f9;margin-bottom:0;
+    }
+    .success-row:last-child{border-bottom:none;padding-bottom:0;}
+    .success-row span:first-child{color:var(--muted);}
+    .success-row span:last-child{font-weight:600;color:var(--text);text-align:right;}
+    .notice-box{
+      background:#fff7ed;border:1px solid #ffedd5;
+      border-radius:16px;padding:24px;text-align:left;margin-bottom:28px;
+    }
+    .notice-box b{font-weight:700;color:#ea580c;font-size:15px;display:block;margin-bottom:12px;}
+    .notice-box p{font-size:14px;color:#9a3412;line-height:1.9;margin:0;}
+  </style>
+</head>
+<body>
+
+  <!-- ════ 成功頁面 ════ -->
+  <div id="successPage">
+    <div class="success-inner">
+      <div class="success-icon">
+        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5">
+          <polyline points="20 6 9 17 4 12"/>
+        </svg>
+      </div>
+      <h1 style="font-size:28px;font-weight:800;color:#0f172a;margin-bottom:12px;">報名已成功送出！</h1>
+      <p style="color:var(--muted);font-size:16px;margin-bottom:36px;line-height:1.7;">
+        姜美美教練已收到您的報名通知，<br>將盡快與您確認上課時間。
+      </p>
+
+      <div class="success-card">
+        <span class="success-label">報名資訊確認</span>
+        <div id="successRows" style="display:flex;flex-direction:column;gap:12px;"></div>
+      </div>
+
+      <div class="notice-box">
+        <b>🌊 課前注意事項</b>
+        <p>
+          費用：每人 NT$ 2,800（含門票、面鏡、呼吸管、長蛙）。<br>
+          需注意的地方：有心臟病史、癲癇症、幽閉恐懼症、恐高症、嚴重恐水者，不建議上課。<br>
+          自備用品：泳帽、泳衣、盥洗用品、大浴巾及飲用水。<br>
+          請提前 15 分鐘於泳池櫃檯集合。<br>
+          如有未盡事宜，將以個別諮詢與實際規劃之結果為準。
+        </p>
+      </div>
+
+      <div id="emailNotice" style="display:none;background:#f0f9ff;border:1px solid #bae6fd;
+        border-radius:12px;padding:16px;font-size:13.5px;color:#0369a1;margin-bottom:24px;">
+        📧 確認信已寄至您的 Email，請記得查收。
+      </div>
+
+      <p style="font-size:13px;color:#94a3b8;">如有問題，歡迎直接聯繫姜美美教練</p>
+    </div>
+  </div>
+
+  <!-- ════ 主體 ════ -->
+  <div class="wrap">
+    <header class="card">
+      <div class="brand-info">
+        <div class="avatar">姜</div>
+        <div class="brand">
+          <h1>姜美美 教練｜報名收單系統</h1>
+          <p>國際自由潛水二星教練．喚醒人類生命本能</p>
+        </div>
+      </div>
+      <div class="badge">🌊 2026 夏季班熱烈報名中</div>
+    </header>
+
+    <main class="grid">
+      <section>
+
+        <!-- 基本資料 -->
+        <div class="card">
+          <h2>1) 填寫基本資料</h2>
+          <form id="bookingForm">
+            <div class="row">
+              <div>
+                <label>姓名 *</label>
+                <input name="name" placeholder="請輸入姓名" required/>
+              </div>
+              <div>
+                <label>手機號碼 *</label>
+                <input name="phone" placeholder="09xx-xxx-xxx" required/>
+              </div>
+            </div>
+            <div class="row" style="margin-top:16px;">
+              <div>
+                <label>常用聯繫平台 *</label>
+                <select name="contactType" required>
+                  <option value="Email">Email</option>
+                </select>
+              </div>
+              <div>
+                <label>聯繫帳號 / Email *</label>
+                <input name="contactId" placeholder="請輸入 ID 或 Email" required/>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <!-- 日期選擇 -->
+        <div class="card">
+          <h2>2) 選擇上課日期</h2>
+          <p style="font-size:13px;color:var(--muted);margin:0 0 12px;">
+            開放日期：每年 5 月第三週至 8 月 31 日<br>
+            週六／日／一：限宜蘭龍目井游泳池｜週三／四：限汐止、松山、南港
+          </p>
+          <div class="calendar-wrap">
+            <div class="cal-header">
+              <button class="cal-nav" id="prevMonth">&#8592;</button>
+              <span id="calTitle"></span>
+              <button class="cal-nav" id="nextMonth">&#8594;</button>
+            </div>
+            <div class="cal-grid" id="calGrid">
+              <div class="cal-dow">日</div>
+              <div class="cal-dow">一</div>
+              <div class="cal-dow">二</div>
+              <div class="cal-dow">三</div>
+              <div class="cal-dow">四</div>
+              <div class="cal-dow">五</div>
+              <div class="cal-dow">六</div>
+            </div>
+            <div class="cal-selected-display" id="calDisplay">尚未選擇日期</div>
+          </div>
+          <input type="hidden" name="selectedDate" id="selectedDate"/>
+        </div>
+
+        <!-- 時段選擇 -->
+        <div class="card">
+          <h2>3) 選擇上課時段</h2>
+          <div class="slot-grid" id="slotGrid">
+            <button type="button" class="slot-btn active" data-slot="08:00–10:00">🌅 08:00–10:00</button>
+            <button type="button" class="slot-btn" data-slot="10:00–12:00">☀️ 10:00–12:00</button>
+            <button type="button" class="slot-btn" data-slot="14:00–16:00">🌤 14:00–16:00</button>
+            <button type="button" class="slot-btn" data-slot="18:00–20:00">🌇 18:00–20:00</button>
+          </div>
+          <input type="hidden" name="timeSlot" id="timeSlot" value="08:00–10:00"/>
+        </div>
+
+        <!-- 地點與人數 -->
+        <div class="card">
+          <h2>4) 上課地點與人數</h2>
+          <label>上課地點 *</label>
+          <p id="locHint" style="font-size:12px;color:var(--muted);margin:0 0 10px;"></p>
+          <div class="radio-group" id="locationGroup">
+            <label class="pill active">
+              <input type="radio" name="location" value="汐止戶外池" checked/>
+              <span>汐止戶外池</span>
+            </label>
+            <label class="pill">
+              <input type="radio" name="location" value="松山運動中心"/>
+              <span>松山運動中心</span>
+            </label>
+            <label class="pill">
+              <input type="radio" name="location" value="南港運動中心"/>
+              <span>南港運動中心</span>
+            </label>
+            <label class="pill">
+              <input type="radio" name="location" value="宜蘭龍目井游泳池"/>
+              <span>宜蘭龍目井游泳池</span>
+            </label>
+          </div>
+
+          <div style="margin-top:20px;">
+            <label>報名人數（上限 6 人）</label>
+            <input name="qty" type="number" min="1" max="6" value="1" id="qtyInput"/>
+          </div>
+
+          <div style="margin-top:16px;">
+            <label>水下活動經驗</label>
+            <select name="experience">
+              <option value="無經驗（完全恐水）">無經驗（完全恐水）</option>
+              <option value="稍有經驗（會換氣）">稍有經驗（會換氣）</option>
+              <option value="進階（對水下敢於嘗試）">進階（對水下敢於嘗試）</option>
+            </select>
+          </div>
+
+          <div style="margin-top:16px;">
+            <label>特殊需求或身體狀況備註（選填）</label>
+            <textarea name="note" rows="3" placeholder="例：有過耳膜手術、極度怕水..."></textarea>
+          </div>
+        </div>
+
+        <!-- 課前注意事項 -->
+        <div class="caution-box">
+          <b>⚠️ 需注意的地方</b>
+          以下人群不建議上課：<br>
+          • 心臟病史<br>
+          • 癲癇症<br>
+          • 幽閉恐懼症<br>
+          • 恐高症<br>
+          • 嚴重恐水者
+        </div>
+
+        <div class="notice">
+          <b>📋 課前注意事項</b>
+          費用：每人 NT$ 2,800（含門票、面鏡、呼吸管、長蛙）。<br>
+          自備：泳帽、泳衣、盥洗用品、大浴巾及飲用水。<br>
+          請提前 15 分鐘於泳池櫃檯集合。<br>
+          如有未盡事宜，將以個別諮詢與實際規劃之結果為準。
+        </div>
+
+      </section>
+
+      <!-- 右側摘要 -->
+      <aside>
+        <div class="card summary-card">
+          <h2>預約摘要</h2>
+          <div class="summary-list">
+            <div class="sumrow"><span>課程</span><span>自由潛水體驗課</span></div>
+            <div class="sumrow"><span>時長</span><span>2 小時</span></div>
+            <div class="sumrow"><span>日期</span><span id="sumDate">尚未選擇</span></div>
+            <div class="sumrow"><span>時段</span><span id="sumSlot">08:00–10:00</span></div>
+            <div class="sumrow"><span>地點</span><span id="sumLocation">汐止戶外池</span></div>
+            <div class="sumrow"><span>人數</span><span id="sumQty">1 位</span></div>
+            <div class="sumrow total"><span>費用</span><span id="sumPrice">NT$ 2,800</span></div>
+          </div>
+          <button type="button" class="btn" id="submitBtn">確認報名</button>
+        </div>
+
+        <div class="notice" style="margin-top:0;">
+          <b>💡 溫馨提醒</b>
+          報名送出後，姜教練將主動聯繫確認時間。如有體能上的顧慮，歡迎提前告知。
+        </div>
+      </aside>
+    </main>
+
+    <footer>© 2026 姜美美教練．生命本能自救教學</footer>
+  </div>
+
+  <div class="toast" id="toast">✓ 報名資訊已送出</div>
+
+  <script>
+    var APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx896OUa2WcHmqn-Fe63ELwhN882lSbWJlL6WHPD_saAt3Yiii2bPrdl-pmoQTOlX0R/exec';
+
+    /* ══════════════════════════════
+       日期規則
+       開放：每年 5/第三週 ~ 8/31
+       週二、週五：不可選
+       週六、日、一：只能選宜蘭龍目井
+       週三、週四：只能選汐止、松山、南港
+    ══════════════════════════════ */
+    function getThirdMonday(year, month) {
+      // 取得該月第三個週一
+      var count = 0;
+      for (var d = 1; d <= 31; d++) {
+        var dt = new Date(year, month, d);
+        if (dt.getMonth() !== month) break;
+        if (dt.getDay() === 1) { count++; if (count === 3) return d; }
+      }
+      return 15;
+    }
+
+    function isAllowedDate(year, month, day) {
+      var dt = new Date(year, month, day);
+      var dow = dt.getDay(); // 0=日,1=一,2=二,3=三,4=四,5=五,6=六
+
+      // 週二(2)、週五(5) 不可選
+      if (dow === 2 || dow === 5) return false;
+
+      // 開放區間：5月第三週週一 ~ 8月31日
+      var openStart = new Date(year, 4, getThirdMonday(year, 4)); // 5月
+      var openEnd   = new Date(year, 7, 31); // 8月31日
+
+      if (dt < openStart || dt > openEnd) return false;
+
+      return true;
+    }
+
+    function getLocRestriction(dow) {
+      // 0=日,1=一,6=六 → 只能宜蘭
+      if (dow === 0 || dow === 1 || dow === 6) return 'yilan';
+      // 3=三,4=四 → 只能汐止、松山、南港
+      if (dow === 3 || dow === 4) return 'north';
+      return 'all';
+    }
+
+    /* ══════════════════════════════
+       地點 pill 控制
+    ══════════════════════════════ */
+    var YILAN_LOCS  = ['宜蘭龍目井游泳池'];
+    var NORTH_LOCS  = ['汐止戶外池','松山運動中心','南港運動中心'];
+    var ALL_LOCS    = ['汐止戶外池','松山運動中心','南港運動中心','宜蘭龍目井游泳池'];
+
+    function updateLocPills(dow) {
+      var restriction = getLocRestriction(dow);
+      var allowed = restriction === 'yilan' ? YILAN_LOCS
+                  : restriction === 'north' ? NORTH_LOCS
+                  : ALL_LOCS;
+
+      var hint = document.getElementById('locHint');
+      if (restriction === 'yilan') hint.textContent = '※ 本日（週六／日／一）限宜蘭龍目井游泳池';
+      else if (restriction === 'north') hint.textContent = '※ 本日（週三／四）限汐止、松山、南港場地';
+      else hint.textContent = '';
+
+      var pills = document.querySelectorAll('#locationGroup .pill');
+      var firstAllowed = null;
+      pills.forEach(function(pill) {
+        var radio = pill.querySelector('input[type="radio"]');
+        var val = radio.value;
+        if (allowed.indexOf(val) > -1) {
+          pill.classList.remove('disabled-loc');
+          radio.disabled = false;
+          if (!firstAllowed) firstAllowed = radio;
+        } else {
+          pill.classList.add('disabled-loc');
+          radio.disabled = true;
+          if (radio.checked && firstAllowed) {
+            firstAllowed.checked = true;
+            firstAllowed.closest('.pill').classList.add('active');
+            pill.classList.remove('active');
+          }
+        }
+      });
+      // 確保有一個被選中
+      var checked = document.querySelector('[name="location"]:not(:disabled):checked');
+      if (!checked && firstAllowed) {
+        firstAllowed.checked = true;
+      }
+      updateSummary();
+    }
+
+    /* ══════════════════════════════
+       日曆元件
+    ══════════════════════════════ */
+    var today = new Date();
+    var viewYear  = today.getFullYear();
+    var viewMonth = today.getMonth();
+    var selectedDateStr = '';
+    var selectedDow = -1;
+
+    function renderCalendar() {
+      var title = document.getElementById('calTitle');
+      var grid  = document.getElementById('calGrid');
+      var monthNames = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+      title.textContent = viewYear + ' 年 ' + monthNames[viewMonth];
+
+      var days = grid.querySelectorAll('.cal-day');
+      days.forEach(function(d){ d.remove(); });
+
+      var firstDay    = new Date(viewYear, viewMonth, 1).getDay();
+      var daysInMonth = new Date(viewYear, viewMonth + 1, 0).getDate();
+
+      for (var i = 0; i < firstDay; i++) {
+        var empty = document.createElement('div');
+        empty.className = 'cal-day empty';
+        grid.appendChild(empty);
+      }
+
+      for (var d = 1; d <= daysInMonth; d++) {
+        var el = document.createElement('div');
+        el.className = 'cal-day';
+        el.textContent = d;
+
+        var thisDate = new Date(viewYear, viewMonth, d);
+        var todayMid = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+        var allowed  = isAllowedDate(viewYear, viewMonth, d);
+
+        if (thisDate < todayMid || !allowed) {
+          el.classList.add('disabled');
+        } else {
+          if (thisDate.toDateString() === today.toDateString()) el.classList.add('today');
+          var ds = viewYear + '/' + (viewMonth+1) + '/' + d;
+          if (ds === selectedDateStr) el.classList.add('selected');
+
+          el.addEventListener('click', (function(dateStr, elem, dow){
+            return function(){
+              selectedDateStr = dateStr;
+              selectedDow = dow;
+              document.getElementById('selectedDate').value = dateStr;
+              document.getElementById('calDisplay').textContent = '已選擇：' + dateStr;
+              document.getElementById('sumDate').textContent = dateStr;
+              document.querySelectorAll('.cal-day.selected').forEach(function(x){ x.classList.remove('selected'); });
+              elem.classList.add('selected');
+              updateLocPills(dow);
+            };
+          })(ds, el, thisDate.getDay()));
+        }
+        grid.appendChild(el);
+      }
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', function(){
+      viewMonth--;
+      if (viewMonth < 0) { viewMonth = 11; viewYear--; }
+      renderCalendar();
+    });
+    document.getElementById('nextMonth').addEventListener('click', function(){
+      viewMonth++;
+      if (viewMonth > 11) { viewMonth = 0; viewYear++; }
+      renderCalendar();
+    });
+
+    renderCalendar();
+
+    /* ══════════════════════════════
+       時段選擇
+    ══════════════════════════════ */
+    var slotBtns = document.querySelectorAll('.slot-btn');
+    slotBtns.forEach(function(btn){
+      btn.addEventListener('click', function(){
+        slotBtns.forEach(function(b){ b.classList.remove('active'); });
+        btn.classList.add('active');
+        var slot = btn.dataset.slot;
+        document.getElementById('timeSlot').value = slot;
+        document.getElementById('sumSlot').textContent = slot;
+      });
+    });
+
+    /* ══════════════════════════════
+       地點 & 人數即時更新
+    ══════════════════════════════ */
+    var form = document.getElementById('bookingForm');
+    var locPills = document.querySelectorAll('#locationGroup .pill');
+    locPills.forEach(function(pill){
+      pill.addEventListener('click', function(){
+        locPills.forEach(function(p){ p.classList.remove('active'); });
+        pill.classList.add('active');
+        updateSummary();
+      });
+    });
+
+    document.getElementById('qtyInput').addEventListener('input', updateSummary);
+
+    function updateSummary(){
+      var qty = parseInt(document.getElementById('qtyInput').value) || 1;
+      var loc = document.querySelector('[name="location"]:not(:disabled):checked');
+      document.getElementById('sumQty').textContent = qty + ' 位';
+      document.getElementById('sumLocation').textContent = loc ? loc.value : '—';
+      document.getElementById('sumPrice').textContent = 'NT$ ' + (qty * 2800).toLocaleString();
+    }
+    updateSummary();
+
+    /* ══════════════════════════════
+       送出
+    ══════════════════════════════ */
+    document.getElementById('submitBtn').addEventListener('click', function(){
+      var fd = new FormData(form);
+      var loc = document.querySelector('[name="location"]:not(:disabled):checked');
+      var qty = document.getElementById('qtyInput').value;
+
+      var missing = [];
+      if (!fd.get('name'))      missing.push('姓名');
+      if (!fd.get('phone'))     missing.push('手機號碼');
+      if (!fd.get('contactId')) missing.push('聯繫帳號');
+      if (!selectedDateStr)     missing.push('上課日期');
+      if (missing.length) { alert('請填寫：' + missing.join('、')); return; }
+
+      var submitBtn = document.getElementById('submitBtn');
+      submitBtn.textContent = '送出中…';
+      submitBtn.disabled = true;
+
+      var params = {
+        name:       fd.get('name'),
+        phone:      fd.get('phone'),
+        contact:    fd.get('contactType'),
+        contactId:  fd.get('contactId'),
+        date:       selectedDateStr,
+        timeSlot:   document.getElementById('timeSlot').value,
+        location:   loc ? loc.value : '',
+        qty:        qty,
+        experience: fd.get('experience'),
+        note:       fd.get('note') || ''
+      };
+
+      new Image().src = APPS_SCRIPT_URL + '?' + new URLSearchParams(params).toString();
+
+      var rows = [
+        ['姓名',   params.name],
+        ['手機',   params.phone],
+        [params.contact, params.contactId],
+        ['上課日期', params.date],
+        ['時段',   params.timeSlot],
+        ['地點',   params.location],
+        ['人數',   params.qty + ' 位'],
+        ['經驗',   params.experience],
+      ];
+      if (params.note) rows.push(['備註', params.note]);
+
+      var html = rows.map(function(r){
+        return '<div class="success-row"><span>'+r[0]+'</span><span>'+r[1]+'</span></div>';
+      }).join('');
+      document.getElementById('successRows').innerHTML = html;
+
+      if (params.contact === 'Email' && params.contactId.indexOf('@') > -1) {
+        document.getElementById('emailNotice').style.display = 'block';
+      }
+
+      document.getElementById('successPage').style.display = 'block';
+      window.scrollTo(0, 0);
+    });
+  </script>
+</body>
+</html>

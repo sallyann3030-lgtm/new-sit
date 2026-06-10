@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姜美美｜生命本能 3-5 秒溺水自救體驗課</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;700&display=swap" rel="stylesheet">
+
+    <!--
+    ══════════════════════════════════════════
+    圖片命名規則
+    ──────────────────────────────────────────
+    Hero 背景        hero-bg.jpg           16:9   1920×1080px
+    痛點① 恐懼      pain-fear.jpg          1:1    800×800px
+    痛點② 反應      pain-reaction.jpg      1:1    800×800px
+    痛點③ 僵硬      pain-freeze.jpg        1:1    800×800px
+    方案① 水性解構  method-water.jpg       4:3    800×600px
+    方案② 本能啟動  method-instinct.jpg    4:3    800×600px
+    方案③ 實境演練  method-drill.jpg       4:3    800×600px
+    關於我           mei-about.jpg          直向   800×900px
+
+    換成 Google Drive 圖床：
+    src="https://drive.google.com/uc?export=view&id=【ID】"
+    ══════════════════════════════════════════
+    -->
+
+    <style>
+        :root {
+            --navy:    #0f172a;
+            --navy2:   #1e3a8a;
+            --blue:    #3b82f6;
+            --blue2:   #60a5fa;
+            --mist:    #94a3b8;
+            --text:    #1e293b;
+            --text2:   #64748b;
+            --white:   #ffffff;
+            --bg:      #f8fafc;
+            --bg2:     #ffffff;
+            --border:  #e2e8f0;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* ── 導覽列 ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 60px;
+            background: rgba(15,23,42,0.85);
+            backdrop-filter: blur(15px);
+            border-bottom: 1px solid rgba(59,130,246,0.15);
+            transition: var(--transition);
+        }
+        nav.scrolled { padding: 12px 60px; background: rgba(15,23,42,0.97); }
+        .nav-logo {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 18px; font-weight: 700;
+            color: var(--blue2);
+            letter-spacing: 2px; text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 36px; }
+        .nav-links a {
+            font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+            color: var(--mist); text-decoration: none; transition: var(--transition);
+            position: relative;
+        }
+        .nav-links a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0;
+            width: 0; height: 1px; background: var(--blue); transition: var(--transition);
+        }
+        .nav-links a:hover { color: var(--blue2); }
+        .nav-links a:hover::after { width: 100%; }
+        .menu-toggle { display: none; cursor: pointer; color: var(--blue2); font-size: 24px; }
+
+        /* 行動選單 */
+        .mobile-menu {
+            display: none; flex-direction: column;
+            position: fixed; top: 65px; left: 0; right: 0; z-index: 999;
+            background: rgba(15,23,42,0.97);
+            border-bottom: 1px solid rgba(59,130,246,0.1);
+        }
+        .mobile-menu.open { display: flex; }
+        .mobile-menu a {
+            padding: 18px 30px; font-size: 14px; letter-spacing: 2px;
+            color: var(--mist); text-decoration: none; text-transform: uppercase;
+            border-bottom: 1px solid rgba(59,130,246,0.05);
+            transition: var(--transition);
+        }
+        .mobile-menu a:hover { color: var(--blue2); background: rgba(59,130,246,0.05); }
+
+        /* ── 全域 ── */
+        section { padding: 120px 60px; }
+        .container { max-width: 1200px; margin: 0 auto; width: 100%; }
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        .label {
+            font-size: 12px; letter-spacing: 5px; text-transform: uppercase;
+            color: var(--blue); font-weight: 600; margin-bottom: 16px; display: block;
+        }
+        h2 { font-family: 'Noto Serif TC', serif; font-size: clamp(26px, 4vw, 42px); font-weight: 700; color: var(--text); margin-bottom: 16px; line-height: 1.3; }
+        h3 { font-family: 'Noto Serif TC', serif; font-size: 20px; color: var(--text); margin-bottom: 12px; }
+        .blue-line { width: 60px; height: 3px; background: var(--blue); margin-bottom: 40px; border-radius: 2px; }
+        .blue-line.center { margin-left: auto; margin-right: auto; }
+
+        .btn-primary {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 18px 48px; background: var(--blue);
+            color: var(--white); font-size: 15px; font-weight: 700;
+            letter-spacing: 2px; text-decoration: none; border-radius: 10px;
+            transition: var(--transition); border: none; cursor: pointer;
+        }
+        .btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 12px 28px rgba(59,130,246,0.3); }
+
+        .btn-ghost {
+            display: inline-flex; align-items: center; gap: 10px;
+            padding: 18px 48px; background: rgba(255,255,255,0.1);
+            color: var(--white); font-size: 15px; font-weight: 700;
+            letter-spacing: 2px; text-decoration: none; border-radius: 10px;
+            transition: var(--transition); backdrop-filter: blur(4px);
+        }
+        .btn-ghost:hover { background: rgba(255,255,255,0.2); }
+
+        /* ════════════════════════════
+           HERO
+        ════════════════════════════ */
+        #hero {
+            min-height: 88vh; padding: 0;
+            position: relative; display: flex; align-items: center; overflow: hidden;
+        }
+        .hero-bg {
+            position: absolute; inset: 0; z-index: 0;
+            background-image: url('hero-bg.jpg');
+            background-size: cover;
+            background-position: center top;
+        }
+        .hero-bg::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(
+                to right,
+                rgba(15,23,42,0.82) 0%,
+                rgba(30,58,138,0.50) 55%,
+                rgba(15,23,42,0.12) 100%
+            );
+        }
+        .hero-container {
+            position: relative; z-index: 1;
+            padding: 140px 60px 80px;
+            max-width: 1200px; margin: 0 auto; width: 100%;
+        }
+        .hero-badge {
+            display: inline-block; padding: 6px 20px; margin-bottom: 24px;
+            border: 1px solid rgba(96,165,250,0.6); border-radius: 999px;
+            font-size: 13px; letter-spacing: 3px; color: var(--blue2);
+        }
+        .hero-title {
+            font-family: 'Noto Serif TC', serif;
+            font-size: clamp(30px, 4vw, 48px);
+            font-weight: 700; line-height: 1.25;
+            color: var(--white); margin-bottom: 24px; max-width: 720px;
+        }
+        .hero-title span { color: var(--blue2); }
+        .hero-desc {
+            font-size: 18px; color: #cbd5e1;
+            margin-bottom: 48px; max-width: 480px; line-height: 1.8;
+        }
+        .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+        /* ════════════════════════════
+           痛點區
+        ════════════════════════════ */
+        #pain { background: var(--bg); }
+        .pain-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; }
+
+        .pain-card {
+            background: var(--bg2); border-radius: 20px;
+            border: 1px solid var(--border);
+            overflow: hidden; transition: var(--transition);
+            box-shadow: 0 4px 16px rgba(0,0,0,0.04);
+        }
+        .pain-card:hover { transform: translateY(-8px); box-shadow: 0 16px 40px rgba(0,0,0,0.10); }
+
+        .pain-img-wrap {
+            width: 100%; aspect-ratio: 1/1;
+            overflow: hidden; background: #e2e8f0; position: relative;
+        }
+        .pain-img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center; display: block;
+            transition: transform 0.5s ease;
+        }
+        .pain-card:hover .pain-img-wrap img { transform: scale(1.05); }
+
+        .img-placeholder {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 8px;
+        }
+        .img-placeholder span { font-size: 11px; color: #94a3b8; letter-spacing: 1px; }
+
+        .pain-body { padding: 28px; }
+        .pain-x { font-size: 28px; color: #ef4444; margin-bottom: 12px; }
+        .pain-body p { font-size: 15px; color: var(--text2); line-height: 1.8; font-weight: 500; }
+
+        /* ════════════════════════════
+           方案區
+        ════════════════════════════ */
+        #solution { background: var(--bg2); text-align: center; }
+        .solution-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 70px; }
+
+        .method-card {
+            background: var(--bg); border-radius: 20px;
+            overflow: hidden; transition: var(--transition);
+            border: 1px solid var(--border); text-align: left;
+        }
+        .method-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(0,0,0,0.08); }
+
+        .method-img-wrap {
+            width: 100%; aspect-ratio: 4/3;
+            overflow: hidden; background: #e2e8f0; position: relative;
+        }
+        .method-img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center; display: block;
+            transition: transform 0.5s ease;
+        }
+        .method-card:hover .method-img-wrap img { transform: scale(1.05); }
+
+        .method-body { padding: 28px; position: relative; }
+        .step-num {
+            font-family: 'Noto Serif TC', serif;
+            font-size: 72px; font-weight: 700;
+            color: transparent; -webkit-text-stroke: 1px var(--blue);
+            opacity: 0.15; position: absolute; top: -12px; right: 12px;
+            pointer-events: none; user-select: none;
+        }
+        .method-body h3 { position: relative; z-index: 1; }
+        .method-body p { font-size: 15px; color: var(--text2); line-height: 1.8; position: relative; z-index: 1; }
+
+        /* ════════════════════════════
+           關於我
+        ════════════════════════════ */
+        #about { background: var(--bg); }
+        .about-card {
+            display: flex; border-radius: 28px; overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.10);
+            background: var(--bg2); max-width: 960px; margin: 0 auto;
+        }
+        .about-img-wrap {
+            width: 40%; flex-shrink: 0;
+            min-height: 420px; overflow: hidden; position: relative;
+            background: #e2e8f0;
+        }
+        .about-img-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover; object-position: center top; display: block;
+        }
+        .about-body { padding: 60px 56px; display: flex; flex-direction: column; justify-content: center; }
+        .about-body h2 { font-size: 32px; margin-bottom: 20px; }
+        .about-body p { font-size: 16px; color: var(--text2); margin-bottom: 24px; line-height: 1.9; }
+        .about-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .about-list li { display: flex; align-items: center; gap: 10px; font-size: 15px; color: var(--text); }
+        .about-list li::before { content: '✓'; color: var(--blue); font-weight: 700; }
+
+        /* ════════════════════════════
+           產品區
+        ════════════════════════════ */
+        #product { background: var(--bg2); }
+        .product-card {
+            max-width: 780px; margin: 0 auto;
+            background: var(--navy); color: var(--white);
+            border-radius: 28px; padding: 64px;
+            position: relative; box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+        }
+        .product-badge {
+            position: absolute; top: 0; right: 0;
+            background: var(--blue); color: var(--white);
+            padding: 10px 28px; border-radius: 0 28px 0 20px;
+            font-weight: 700; font-size: 14px;
+        }
+        .product-price { font-size: 52px; font-weight: 800; margin: 24px 0; }
+        .product-price span { font-size: 18px; color: var(--mist); font-weight: 400; margin-left: 12px; }
+        .product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 36px; }
+        .product-item { border-left: 3px solid var(--blue); padding-left: 16px; }
+        .product-item h4 { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+        .product-item p { font-size: 14px; color: var(--mist); }
+        .product-notice {
+            background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.25);
+            border-radius: 14px; padding: 20px 24px; margin-bottom: 36px;
+            font-size: 14px; color: #bfdbfe; line-height: 1.7;
+        }
+        .product-notice b { color: var(--blue2); display: block; margin-bottom: 6px; }
+
+        /* ════════════════════════════
+           CTA
+        ════════════════════════════ */
+        #cta { background: var(--bg); text-align: center; border-top: 1px solid var(--border); }
+        .cta-inner { max-width: 640px; margin: 0 auto; }
+        .cta-inner h2 { font-size: clamp(28px, 4vw, 42px); margin-bottom: 20px; }
+        .cta-inner p { color: var(--text2); font-size: 17px; margin-bottom: 48px; }
+
+        /* ── 頁尾 ── */
+        footer { padding: 60px; background: var(--navy); text-align: center; }
+        footer p { font-size: 13px; color: var(--mist); }
+        footer p + p { margin-top: 8px; opacity: 0.5; }
+
+        /* ════════════════════════════
+           RWD
+        ════════════════════════════ */
+        @media (max-width: 1024px) {
+            nav { padding: 20px 30px; }
+            nav.scrolled { padding: 12px 30px; }
+            section { padding: 90px 30px; }
+            .hero-container { padding: 42vh 30px 60px; }
+            .hero-desc { max-width: 100%; }
+            .pain-grid { grid-template-columns: repeat(2,1fr); }
+            .solution-grid { grid-template-columns: 1fr; }
+            .method-img-wrap { aspect-ratio: 16/7; }
+            .about-card { flex-direction: column; }
+            .about-img-wrap { width: 100%; min-height: 300px; }
+            .about-body { padding: 40px 36px; }
+            .product-card { padding: 48px 36px; }
+            .product-grid { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            section { padding: 70px 20px; }
+            .hero-container { padding: 52vh 20px 50px; }
+            .hero-title { font-size: clamp(26px, 7.5vw, 36px); max-width: 100%; }
+            .hero-desc { font-size: 16px; max-width: 100%; }
+            .hero-btns { flex-direction: column; }
+            .btn-primary, .btn-ghost { width: 100%; justify-content: center; padding: 16px 28px; }
+            .hero-bg { background-position: 70% top; }
+            .hero-bg::after {
+                background: linear-gradient(
+                    to right,
+                    rgba(15,23,42,0.88) 0%,
+                    rgba(15,23,42,0.65) 50%,
+                    rgba(15,23,42,0.30) 100%
+                );
+            }
+            .pain-grid { grid-template-columns: 1fr; }
+            .pain-img-wrap { aspect-ratio: 4/3; }
+            .about-body { padding: 32px 24px; }
+            .product-card { padding: 40px 24px; }
+            .product-price { font-size: 40px; }
+            footer { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- 導覽列 -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">姜美美 · 生命本能</a>
+        <div class="nav-links">
+            <a href="#pain">痛點分析</a>
+            <a href="#solution">課程方案</a>
+            <a href="#about">關於教練</a>
+            <a href="#cta">立即報名</a>
+        </div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+    </nav>
+
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#pain" onclick="closeMobileMenu()">痛點分析</a>
+        <a href="#solution" onclick="closeMobileMenu()">課程方案</a>
+        <a href="#about" onclick="closeMobileMenu()">關於教練</a>
+        <a href="#cta" onclick="closeMobileMenu()">立即報名</a>
+    </div>
+
+    <!-- ① HERO -->
+    <section id="hero">
+        <!--
+            ★ 換圖：把 hero-bg.jpg 換成 Drive 網址
+            background-image: url('https://drive.google.com/uc?export=view&id=【ID】')
+        -->
+        <div class="hero-bg"></div>
+        <div class="hero-container">
+            <div class="reveal">
+                <div class="hero-badge">國際自由潛水二星教練 姜美美</div>
+                <h1 class="hero-title">
+                    遭遇溺水，關鍵 3-5 秒自救：<br>
+                    <span>喚醒您的生命本能。</span>
+                </h1>
+                <p class="hero-desc">
+                    這不只是教游泳，而是教您在極端狀態下如何「買回生命」的專業技術。
+                </p>
+                <div class="hero-btns">
+                    <a href="sale.html" class="btn-primary">喚醒我的自救本能</a>
+                    <a href="#pain" class="btn-ghost">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ② 痛點區 -->
+    <section id="pain">
+        <div class="container">
+            <div style="text-align:center;" class="reveal">
+                <span class="label">PAIN POINTS</span>
+                <h2>以為會游泳就安全？<br><span style="color:var(--blue);">大多數意外源於瞬間的慌張失措。</span></h2>
+                <div class="blue-line center"></div>
+            </div>
+            <div class="pain-grid">
+
+                <div class="pain-card reveal">
+                    <div class="pain-img-wrap">
+                        <!-- ★ 換圖：pain-fear.jpg -->
+                        <img src="pain-fear.jpg" alt="對深水的恐懼"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="img-placeholder" style="display:none;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/><circle cx="8.5" cy="13.5" r="1.5"/></svg>
+                            <span>pain-fear.jpg</span>
+                        </div>
+                    </div>
+                    <div class="pain-body">
+                        <div class="pain-x">✕</div>
+                        <p>對深水有莫名的恐懼，想學游泳卻始終跨不出那一步？</p>
+                    </div>
+                </div>
+
+                <div class="pain-card reveal">
+                    <div class="pain-img-wrap">
+                        <!-- ★ 換圖：pain-reaction.jpg -->
+                        <img src="pain-reaction.jpg" alt="缺乏求生反應"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="img-placeholder" style="display:none;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/><circle cx="8.5" cy="13.5" r="1.5"/></svg>
+                            <span>pain-reaction.jpg</span>
+                        </div>
+                    </div>
+                    <div class="pain-body">
+                        <div class="pain-x">✕</div>
+                        <p>擔心意外發生時，自己或家人缺乏基本的求生反應？</p>
+                    </div>
+                </div>
+
+                <div class="pain-card reveal">
+                    <div class="pain-img-wrap">
+                        <!-- ★ 換圖：pain-freeze.jpg -->
+                        <img src="pain-freeze.jpg" alt="踩不到底時僵硬"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="img-placeholder" style="display:none;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/><circle cx="8.5" cy="13.5" r="1.5"/></svg>
+                            <span>pain-freeze.jpg</span>
+                        </div>
+                    </div>
+                    <div class="pain-body">
+                        <div class="pain-x">✕</div>
+                        <p>學過游泳，但在踩不到底的環境會瞬間僵硬，不知所措？</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ③ 方案區 -->
+    <section id="solution">
+        <div class="container">
+            <div style="text-align:center;" class="reveal">
+                <span class="label">METHODOLOGY</span>
+                <h2>專業價值的服務旅程</h2>
+                <p style="color:var(--text2);margin-bottom:0;">我們不只是在泳池游泳，而是在建立與水的連結</p>
+                <div class="blue-line center" style="margin-top:24px;"></div>
+            </div>
+            <div class="solution-grid">
+
+                <div class="method-card reveal">
+                    <div class="method-img-wrap">
+                        <!-- ★ 換圖：method-water.jpg -->
+                        <img src="method-water.jpg" alt="水性解構"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="img-placeholder" style="display:none;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
+                            <span>method-water.jpg</span>
+                        </div>
+                    </div>
+                    <div class="method-body">
+                        <div class="step-num">01</div>
+                        <h3>水性解構</h3>
+                        <p>透過科學引導，消除恐懼，建立人在水中的安全感與信任度。</p>
+                    </div>
+                </div>
+
+                <div class="method-card reveal">
+                    <div class="method-img-wrap">
+                        <!-- ★ 換圖：method-instinct.jpg -->
+                        <img src="method-instinct.jpg" alt="本能啟動"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="img-placeholder" style="display:none;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
+                            <span>method-instinct.jpg</span>
+                        </div>
+                    </div>
+                    <div class="method-body">
+                        <div class="step-num">02</div>
+                        <h3>本能啟動</h3>
+                        <p>開發身體的生理調節機制，學習在極端狀態下最核心的自救技術。</p>
+                    </div>
+                </div>
+
+                <div class="method-card reveal">
+                    <div class="method-img-wrap">
+                        <!-- ★ 換圖：method-drill.jpg -->
+                        <img src="method-drill.jpg" alt="實境演練"
+                             onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                        <div class="img-placeholder" style="display:none;">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9l4-4 4 4 4-4 4 4"/></svg>
+                            <span>method-drill.jpg</span>
+                        </div>
+                    </div>
+                    <div class="method-body">
+                        <div class="step-num">03</div>
+                        <h3>實境演練</h3>
+                        <p>針對溺水前 3-5 秒的關鍵反應進行高強度演練，建立肌肉記憶。</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ④ 關於我 -->
+    <section id="about">
+        <div class="container">
+            <div class="about-card reveal">
+                <div class="about-img-wrap">
+                    <!-- ★ 換圖：mei-about.jpg  建議 800×900px -->
+                    <img src="mei-about.jpg" alt="姜美美教練"
+                         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                    <div class="img-placeholder" style="display:none;height:100%;min-height:380px;">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                        <span>mei-about.jpg</span>
+                    </div>
+                </div>
+                <div class="about-body">
+                    <h2>關於姜美美教練</h2>
+                    <p>姜美美是國際自由潛水二星教練，擁有豐富的深水經驗與教學背景。她認為「自救」是一項不分年齡、人人皆應具備的生命技術。</p>
+                    <ul class="about-list">
+                        <li>國際自由潛水二星教練證照</li>
+                        <li>專業生理本能開發指導</li>
+                        <li>具備國際級視野的精準教學</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑤ 產品區 -->
+    <section id="product">
+        <div class="container">
+            <div class="product-card reveal">
+                <div class="product-badge">熱門報名中</div>
+                <h2 style="color:var(--white);font-size:clamp(22px,3vw,32px);">【生命本能】3-5 秒溺水自救體驗班</h2>
+                <p style="color:var(--mist);margin-top:12px;font-size:17px;">不只是游泳課，你還有更多的選擇。</p>
+                <div class="product-price">NT$ 2,800 <span>（含門票、面鏡、呼吸管、長蛙）</span></div>
+                <div class="product-grid">
+                    <div class="product-item">
+                        <h4>課程長度</h4>
+                        <p>2 小時國際教練親授課程</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>專屬評估</h4>
+                        <p>水下安全評估建議與分析</p>
+                    </div>
+                    <div class="product-item">
+                        <h4>精緻小班</h4>
+                        <p>每班 4-6 人，確保教學品質</p>
+                    </div>
+                    
+                </div>
+                <div class="product-notice">
+                    <b>💡 課前須知</b>
+                    請自備：泳衣/泳褲、泳鏡、泳帽、盥洗用品、大浴巾及飲用水。
+                </div>
+                <a href="sale.html" class="btn-primary" style="font-size:16px;padding:18px 48px;">
+                    立即預約自由潛水體驗課 →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ⑥ CTA -->
+    <section id="cta">
+        <div class="container">
+            <div class="cta-inner reveal">
+                <span class="label">GET STARTED</span>
+                <h2>準備好找回您的生命本能了嗎？</h2>
+                <p>現在報名體驗課，為自己與家人多買一份生命的保險。</p>
+                <a href="sale.html" class="btn-primary" style="font-size:16px;padding:20px 56px;">
+                    立即預約自由潛水體驗課 →
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer>
+        <p>© 2026 姜美美專業教練團隊. All Rights Reserved.</p>
+        <p>專注於生命本能開發與水下安全技術</p>
+    </footer>
+
+    <script>
+        // 滾動動畫
+        const reveals = document.querySelectorAll('.reveal');
+        const revealOnScroll = () => {
+            const trigger = window.innerHeight * 0.88;
+            reveals.forEach(el => {
+                if (el.getBoundingClientRect().top < trigger) el.classList.add('active');
+            });
+        };
+
+        // 導覽列捲動
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+            revealOnScroll();
+        });
+
+        // 行動選單
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('open');
+            menuToggle.textContent = mobileMenu.classList.contains('open') ? '✕' : '☰';
+        });
+        function closeMobileMenu() {
+            mobileMenu.classList.remove('open');
+            menuToggle.textContent = '☰';
+        }
+
+        window.onload = revealOnScroll;
+    </script>
+</body>
+</html>
